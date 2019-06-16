@@ -5,4 +5,4 @@
 ## Requirements
 
 - Node.js
-- You should have your own Youtube API key to run this [Link](https://developers.google.com/youtube/v3/getting-started)
+- You should have your own Youtube API key to run this - [Link](https://developers.google.com/youtube/v3/getting-started)
