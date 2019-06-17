@@ -29,4 +29,4 @@ npm start <youtube url> [number of winners]
 ```
 
 - Pick up random winners and save their comments.
-- or save all comments for data archiving purposes (`NO_WINNERS=true`). Do not use it for spamming.
+- or save all comments for data archiving purposes (`npm start <youtube url>`). Do not use it for spamming.
