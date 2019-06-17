@@ -2,7 +2,6 @@ const fs = require('fs');
 const axios = require('axios');
 const dotenv = require('dotenv').config();
 
-const writeStream = fs.createWriteStream('./comments.txt');
 const videoId = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/.exec(
 	process.env.VIDEO_URL
 );
@@ -34,7 +33,7 @@ const getComments = async (nextPageToken = null) => {
 			console.error(error);
 		});
 
-	if (!nextPageToken) return new Promise((resolve, reject) => resolve());
+	if (!nextPageToken) return Promise.resolve();
 	return getComments(nextPageToken);
 };
 
@@ -44,9 +43,7 @@ getComments()
 		const keysArr = Array.from(candidates.keys());
 
 		if (candidates.size < process.env.NUMBER_OF_WINNERS) {
-			return new Promise((resolve, reject) =>
-				reject('Error: the number of winners is more than comments')
-			);
+			return Promise.reject('Error: the number of winners is more than comments');
 		}
 
 		while (winners.size < process.env.NUMBER_OF_WINNERS) {
@@ -59,6 +56,7 @@ getComments()
 		return winners;
 	})
 	.then(winners => {
+		const writeStream = fs.createWriteStream('./comments.txt');
 		writeStream.write(`${winners.size} of ${candidates.size}\n\n-------------------------\n\n`);
 
 		winners.forEach(w => {
