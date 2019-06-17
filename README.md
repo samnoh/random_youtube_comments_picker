@@ -1,5 +1,6 @@
 # Random Youtube Comments Picker
 
+- cli
 - Random winner generator of Youtube comments for giveaways
 
 ## Install
@@ -31,4 +32,4 @@ npm start <youtube url>
 ```
 
 - Pick up random winners and save their comments.
-- Save all comments for data archiving purposes (`NO_WINNERS=true`). Do not use it for spamming.
+- or save all comments for data archiving purposes (`NO_WINNERS=true`). Do not use it for spamming.

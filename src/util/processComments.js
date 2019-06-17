@@ -1,4 +1,4 @@
-const { getComments } = require('./lib/api');
+const { getComments } = require('../lib/api');
 
 const candidates = new Map();
 let id = 0;
