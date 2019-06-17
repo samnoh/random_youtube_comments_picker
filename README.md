@@ -21,8 +21,8 @@ npm install
 - `VIDEO_URL`: Any Youtube link but playlist link
 - `FILTER_NULL_EMAIL=false`: Fetch comments with no emails
 - `NUMBER_OF_WINNERS=3`: The number of winners
-- `HIDE_EMAIL_ON_CONSOLE=true`: Hide parts of winners' email addresses
-- `NO_WINNERS=false`: Pick up random winners
+- `HIDE_EMAIL_ON_CONSOLE=true`: Hide parts of winners' email addresses on console for privacy
+- `NO_WINNERS=false`: Pick up random winners or all comments
 
 ## Usage
 
