@@ -13,6 +13,7 @@ npm i -g
 
 ## Requirements
 
+- Node.js & npm
 - You should have your own Youtube API key - [Link](https://developers.google.com/youtube/v3/getting-started)
 - Edit .env file before running
 
@@ -32,8 +33,6 @@ youtube-comment <youtube url> [number of winners]
 - Or save all comments for data archiving purposes (`youtube-comment <youtube url>`). Do not use it for spamming.
 
 ### Example
-
-![example_01](./img/example_01.png)
 
 ```Shell
 youtube-comment https://www.youtube.com/watch?v=nNVMvXTOgkI 7
