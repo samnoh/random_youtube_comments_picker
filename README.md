@@ -8,7 +8,7 @@
 ```Shell
 git clone https://github.com/samnoh/random_youtube_comments_picker.git &&
 cd random_youtube_comments_picker &&
-npm install
+npm i -g
 ```
 
 ## Requirements
@@ -25,8 +25,8 @@ npm install
 ## Usage
 
 ```Shell
-npm start <youtube url> [number of winners]
+youtube-comment <youtube url> [number of winners]
 ```
 
 - Pick up random winners and save their comments.
-- or save all comments for data archiving purposes (`npm start <youtube url>`). Do not use it for spamming.
+- or save all comments for data archiving purposes (`youtube-comment <youtube url>`). Do not use it for spamming.
