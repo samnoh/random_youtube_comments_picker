@@ -13,7 +13,7 @@ npm i -g
 
 ## Requirements
 
-- Node.js & npm
+- Node.js & npm (or yarn)
 - You should have your own Youtube API key - [Link](https://developers.google.com/youtube/v3/getting-started)
 - Edit .env file before running
 
@@ -30,12 +30,20 @@ youtube-comment <youtube url> [number of winners]
 ```
 
 - Pick up random winners and save their comments.
-- Or save all comments for data archiving purposes (`youtube-comment <youtube url>`). Do not use it for spamming.
+- Or save all comments for data archiving purposes (`youtube-comment <youtube url>`). Do not use it for spamming!
 
-### Example
+#### Example
+
+- Pick 7 winners
 
 ```Shell
 youtube-comment https://www.youtube.com/watch?v=nNVMvXTOgkI 7
+```
+
+- Download all comments
+
+```Shell
+youtube-comment https://www.youtube.com/watch?v=Rx9NoQ1uknI
 ```
 
 ## Uninstall
