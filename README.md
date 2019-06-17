@@ -6,8 +6,8 @@
 ## Install
 
 ```Shell
-git clone https://github.com/samnoh/random_youtube_comments_picker.git &&
-cd random_youtube_comments_picker &&
+git clone https://github.com/samnoh/random_youtube_comments_picker.git
+cd random_youtube_comments_picker
 npm i -g
 ```
 
@@ -19,7 +19,7 @@ npm i -g
 ## .env
 
 - `API_KEY`: Your own Youtube API Key
-- `FILTER_NULL_EMAIL=false`: Fetch comments with no emails
+- `FILTER_NULL_EMAIL=false`: Filter comments with no emails
 - `HIDE_EMAIL_ON_CONSOLE=true`: Hide parts of winners' email addresses on console for privacy
 
 ## Usage
