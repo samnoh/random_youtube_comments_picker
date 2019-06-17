@@ -27,7 +27,7 @@ npm install
 ## Usage
 
 ```Shell
-npm start
+npm start <youtube url>
 ```
 
 - Pick up random winners and save their comments.
