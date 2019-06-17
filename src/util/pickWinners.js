@@ -16,6 +16,15 @@ const pickWinners = candidates => {
 		winners.set(winner, { author: winner, ...candidates.get(winner) });
 	}
 
+	winners.forEach(w => {
+		if (process.env.HIDE_EMAIL_ON_CONSOLE == 'true') {
+			const hideEmail = w.email && w.email.replace(/(\w+)@/.exec(w.email)[1].slice(0, 3), '***');
+			console.log(chalk.green(`#${w.id} ${w.author} - ${hideEmail}`));
+		} else {
+			console.log(chalk.green(`#${w.id} ${w.author} - ${w.email}`));
+		}
+	});
+
 	return Promise.resolve({ winners, candidateSize: candidates.size });
 };
 

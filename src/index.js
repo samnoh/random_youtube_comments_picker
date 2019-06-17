@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const program = require('commander');
-const dotenv = require('dotenv').config();
+const dotenv = require('dotenv').config({ path: __dirname + '/../.env' });
 
 const processComments = require('./util/processComments');
 const pickWinners = require('./util/pickWinners');

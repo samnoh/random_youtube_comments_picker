@@ -29,4 +29,18 @@ youtube-comment <youtube url> [number of winners]
 ```
 
 - Pick up random winners and save their comments.
-- or save all comments for data archiving purposes (`youtube-comment <youtube url>`). Do not use it for spamming.
+- Or save all comments for data archiving purposes (`youtube-comment <youtube url>`). Do not use it for spamming.
+
+### Example
+
+![example_01](./img/example_01.png)
+
+```Shell
+youtube-comment https://www.youtube.com/watch?v=nNVMvXTOgkI 7
+```
+
+## Uninstall
+
+```Shell
+npm rm -g random_youtube_comments_picker
+```
