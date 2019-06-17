@@ -1,5 +1,4 @@
 const fs = require('fs');
-const dotenv = require('dotenv').config();
 const chalk = require('chalk');
 
 const writeStream = fs.createWriteStream('./comments.txt');
@@ -14,7 +13,7 @@ const writeFile = ({ winners, candidateSize }) => {
 	}
 
 	winners.forEach(w => {
-		if (process.env.HIDE_EMAIL_ON_CONSOLE == 'true') {
+		if (process.env.HIDE_EMAIL_ON_CONSOLE == 'true' && process.env.FILTER_NULL_EMAIL == 'true') {
 			const hideEmail = w.email.replace(/(\w+)@/.exec(w.email)[1].slice(0, 3), '***');
 			console.log(chalk.green(`#${w.id} ${w.author} - ${hideEmail}`));
 		} else {

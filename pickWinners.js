@@ -1,4 +1,3 @@
-const dotenv = require('dotenv').config();
 const chalk = require('chalk');
 
 const pickWinners = candidates => {
@@ -16,7 +15,7 @@ const pickWinners = candidates => {
 		winners.set(winner, { author: winner, ...candidates.get(winner) });
 	}
 
-	return Promise.resolve({ winners, candidatesSize: candidates.size });
+	return Promise.resolve({ winners, candidateSize: candidates.size });
 };
 
 module.exports = pickWinners;

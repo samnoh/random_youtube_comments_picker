@@ -1,4 +1,3 @@
-const dotenv = require('dotenv').config();
 const { getComments } = require('./lib/api');
 
 const candidates = new Map();
