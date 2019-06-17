@@ -18,10 +18,10 @@ npm install
 ## .env
 
 - `API_KEY`: Your own Youtube API Key
-- `VIDEO_URL`: Any Youtube link butn playlist link
-- `FILTER_NULL_EMAIL=true`: Users with no emails are also shown
+- `VIDEO_URL`: Any Youtube link but playlist link
+- `FILTER_NULL_EMAIL=true`: Fetch comments with no emails
 - `NUMBER_OF_WINNERS=3`: The number of winners
-- `HIDE_EMAIL_ON_CONSOLE=true`
+- `HIDE_EMAIL_ON_CONSOLE=true`: Hide parts of winners' email addresses
 - `NO_WINNERS=false`: Pick up random winners
 
 ## Usage
@@ -30,5 +30,5 @@ npm install
 npm start
 ```
 
-- Pick up random winners and save their comments
-- Save all comments (`NO_WINNERS=true`)
+- Pick up random winners and save their comments.
+- Save all comments for data archiving purposes (`NO_WINNERS=true`). Do not use it for spamming.
