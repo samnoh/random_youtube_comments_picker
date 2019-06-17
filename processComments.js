@@ -14,7 +14,7 @@ const processComments = async (nextPageToken = null) => {
 				const email = /\w+@\w+\.\w+/g.exec(comment);
 
 				if (!candidates.has(author) && (process.env.FILTER_NULL_EMAIL == 'true' ? email : true)) {
-					candidates.set(author, { id: ++id, email: email && email[0], comment });
+					candidates.set(author, { author, id: ++id, email: email && email[0], comment });
 				}
 			});
 		})
