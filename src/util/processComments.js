@@ -4,6 +4,8 @@ const candidates = new Map();
 let id = 0;
 
 const processComments = async (nextPageToken = null) => {
+	console.log('Process comments...');
+
 	await getComments(nextPageToken)
 		.then(({ items, nextPageTokenResult }) => {
 			nextPageToken = nextPageTokenResult;

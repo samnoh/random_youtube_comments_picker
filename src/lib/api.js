@@ -4,13 +4,13 @@ const chalk = require('chalk');
 const videoId = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/.exec(
 	process.argv[2]
 );
-const youtubeAPIUrl = `https://www.googleapis.com/youtube/v3/commentThreads?key=${
-	process.env.API_KEY
-}&textFormat=plainText&part=snippet&videoId=${videoId && videoId[1]}&maxResults=100`;
+const youtubeAPIUrlBase = 'https://www.googleapis.com/youtube/v3';
+const youtubeAPIUrlComment = `${youtubeAPIUrlBase}/commentThreads?textFormat=plainText&part=snippet&maxResults=100&videoId=${videoId &&
+	videoId[1]}?key=${process.env.API_KEY}`;
 
 const getComments = (nextPageToken = null) => {
 	return axios
-		.get(`${youtubeAPIUrl}${nextPageToken ? '&pageToken=' + nextPageToken : ''}`)
+		.get(`${youtubeAPIUrlComment}${nextPageToken ? '&pageToken=' + nextPageToken : ''}`)
 		.then(res => {
 			const data = res.data;
 			nextPageToken = data.nextPageToken;
