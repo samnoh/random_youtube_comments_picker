@@ -15,7 +15,7 @@ processComments()
 	})
 	.then(winners => writeFile(winners))
 	.then(message => {
-		console.log(message + '\nbye');
+		console.log(message + '\nbye...');
 		process.exit(0);
 	})
 	.catch(error => {
