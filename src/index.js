@@ -26,4 +26,4 @@ processComments()
 setTimeout(() => {
 	console.error('Error: timeout');
 	process.exit(1);
-}, 180000); // 3 minutes
+}, 3 * 60 * 1000); // 3 minutes
