@@ -1,7 +1,7 @@
-# Random Youtube Comments Picker
+# Random YouTube Comments Picker
 
 -   CLI Node App
--   Random winner generator of Youtube comments for giveaways
+-   Random winner generator of YouTube comments for giveaways
 
 ## Install
 
@@ -14,12 +14,12 @@ npm i -g
 ## Requirements
 
 -   Node.js & npm (or yarn)
--   You should have your own Youtube API key - [Link](https://developers.google.com/youtube/v3/getting-started)
+-   You should have your own YouTube API key - [Link](https://developers.google.com/youtube/v3/getting-started)
 -   Edit .env file before running
 
 ## .env
 
--   `API_KEY`: Your own Youtube API Key
+-   `API_KEY`: Your own YouTube API Key
 -   `FILTER_NULL_EMAIL=false`: Filter comments with no emails
 -   `HIDE_EMAIL_ON_CONSOLE=true`: Hide parts of winners' email addresses on console for privacy
 
