@@ -3,25 +3,45 @@ import chalk from 'chalk';
 import { ApiUrl } from './ApiUrl';
 import { GoogleApi } from './GoogleApi';
 
-type items = { [key: string]: any }[];
+interface CommentText {
+    authorDisplayName: string;
+    textDisplay: string;
+}
 
-export class Comments extends GoogleApi {
-    apiUrl: string = `${this.baseUrl}/youtube/v3`;
-    data: items = [];
+interface Item {
+    snippet: {
+        topLevelComment: {
+            snippet: CommentText;
+        };
+    };
+}
+
+export class Comments extends GoogleApi<string[], any> {
+    apiUrl: string = `${this.baseUrl}/youtube/v3${ApiUrl.COMMENTS}`;
+    data: string[] = [];
 
     async save(videoId: string): Promise<void> {
         try {
-            const res = await this.getData(`${ApiUrl.COMMENTS}${videoId}`);
-            this.data = res.items;
+            let nextPagetoken: string = '';
+
+            do {
+                const url = `${videoId}${nextPagetoken ? '&pageToken=' + nextPagetoken : ''}`;
+                const res = await this.getData(url);
+                res.items.map((item: Item) => {
+                    const snippet: CommentText = item.snippet.topLevelComment.snippet;
+                    this.data.push(`${snippet.authorDisplayName} - ${snippet.textDisplay}`);
+                });
+
+                nextPagetoken = res.nextPageToken;
+            } while (nextPagetoken);
         } catch (e) {
-            console.error(chalk.bold.red('Youtube API Error: ' + e));
+            console.error(chalk.bold.red('Comments Error: ' + e));
         }
     }
 
     print(): void {
         this.data.map(comment => {
-            const snippet = comment.snippet.topLevelComment.snippet;
-            console.log(`${snippet.authorDisplayName} - ${snippet.textDisplay}`);
+            console.log(comment);
         });
     }
 }

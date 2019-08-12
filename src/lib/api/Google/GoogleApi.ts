@@ -1,20 +1,21 @@
 import axios, { AxiosResponse } from 'axios';
 import { API_KEY } from '../../../util/secrets';
 
-export abstract class GoogleApi {
+export abstract class GoogleApi<T, K> {
     apiKey: string = `&key=${API_KEY}`;
     baseUrl: string = 'https://www.googleapis.com';
 
     abstract apiUrl: string;
-    abstract data: any;
-    abstract save(id?: string): any;
+    abstract data: T;
+    abstract save(id?: string): void;
     abstract print(): void;
 
-    getData(params?: string): Promise<any> {
-        return axios.get(this.apiUrl + params + this.apiKey).then((res: AxiosResponse) => res.data);
+    async getData(params?: string): Promise<K> {
+        const res = await axios.get(this.apiUrl + params + this.apiKey);
+        return res.data;
     }
 
-    get(): any {
+    get(): T {
         return this.data;
     }
 }

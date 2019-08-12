@@ -8,7 +8,7 @@ if (fs.existsSync('.env')) {
     process.exit(1);
 }
 
-export const API_KEY: string = process.env.API_KEY as string;
+export const API_KEY: string = process.env.API_KEY;
 
 if (!API_KEY) {
     console.error('Set API_KEY env variable.');

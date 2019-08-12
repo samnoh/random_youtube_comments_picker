@@ -1,3 +1,5 @@
-import { YoutubeApi } from './lib';
+import { YoutubeApi, Summary } from './lib';
 
-YoutubeApi.getComments('pzOKiuJuDcQ').then(data => console.log(data));
+YoutubeApi.getComments('5r0ZQmVj42I').then((data: string[]) => {
+    Summary.randomSelectWithConsoleReport(data).buildAndPrintReport(2);
+});
