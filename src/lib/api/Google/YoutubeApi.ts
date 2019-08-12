@@ -7,7 +7,7 @@ export class YoutubeApi {
         return comment.get();
     }
 
-    static async getAndPrintComments(videoId: string): Promise<void> {
+    static async getAndPrintAllComments(videoId: string): Promise<void> {
         const comment = new Comments();
         await comment.save(videoId);
         comment.print();

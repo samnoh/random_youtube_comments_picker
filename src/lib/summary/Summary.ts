@@ -10,8 +10,8 @@ export interface OutputTarget {
 }
 
 export class Summary {
-    static randomSelectWithConsoleReport(data: string[]): Summary {
-        return new Summary(new Random(data), new ConsoleOutput());
+    static randomSelectWithConsoleReport(data: string[], num: number): void {
+        new Summary(new Random(data), new ConsoleOutput()).buildAndPrintReport(num);
     }
 
     constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}

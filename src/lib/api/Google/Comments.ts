@@ -23,6 +23,7 @@ export class Comments extends GoogleApi<string[], any> {
     async save(videoId: string): Promise<void> {
         try {
             let nextPagetoken: string = '';
+            videoId = this.getVideoId(videoId);
 
             do {
                 const url = `${videoId}${nextPagetoken ? '&pageToken=' + nextPagetoken : ''}`;
@@ -40,8 +41,14 @@ export class Comments extends GoogleApi<string[], any> {
     }
 
     print(): void {
-        this.data.map(comment => {
+        this.data.map((comment: string) => {
             console.log(comment);
         });
+    }
+
+    getVideoId(url: string): string {
+        return /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/.exec(
+            url
+        )[1];
     }
 }

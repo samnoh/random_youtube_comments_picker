@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { API_KEY } from '../../../util/secrets';
+import { API_KEY } from '../../../util';
 
 export abstract class GoogleApi<T, K> {
     apiKey: string = `&key=${API_KEY}`;
