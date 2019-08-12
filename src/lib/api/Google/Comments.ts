@@ -3,15 +3,16 @@ import chalk from 'chalk';
 import { ApiUrl } from './ApiUrl';
 import { GoogleApi } from './GoogleApi';
 
+type items = { [key: string]: any }[];
+
 export class Comments extends GoogleApi {
     apiUrl: string = `${this.baseUrl}/youtube/v3`;
-    data: { [key: string]: any } = [];
+    data: items = [];
 
-    async get(videoId: string): Promise<Comments> {
+    async save(videoId: string): Promise<void> {
         try {
             const res = await this.getData(`${ApiUrl.COMMENTS}${videoId}`);
             this.data = res.items;
-            return this;
         } catch (e) {
             console.error(chalk.bold.red('Youtube API Error: ' + e));
         }
@@ -20,7 +21,7 @@ export class Comments extends GoogleApi {
     print(): void {
         this.data.map(comment => {
             const snippet = comment.snippet.topLevelComment.snippet;
-            console.log(snippet.textDisplay);
+            console.log(`${snippet.authorDisplayName} - ${snippet.textDisplay}`);
         });
     }
 }

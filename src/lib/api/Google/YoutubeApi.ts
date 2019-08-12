@@ -1,7 +1,9 @@
 import { Comments } from './Comments';
 
 export class YoutubeApi {
-    static getAndPrintComments(videoId: string): void {
-        new Comments().get(videoId).then(comments => comments.print());
+    static async getAndPrintComments(videoId: string): Promise<void> {
+        const comment = new Comments();
+        await comment.save(videoId);
+        comment.print();
     }
 }

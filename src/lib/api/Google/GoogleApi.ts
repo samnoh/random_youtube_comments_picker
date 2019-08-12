@@ -6,8 +6,15 @@ export abstract class GoogleApi {
     baseUrl: string = 'https://www.googleapis.com';
 
     abstract apiUrl: string;
+    abstract data: any;
+    abstract save(id?: string): any;
+    abstract print(): void;
 
     getData(params?: string): Promise<any> {
         return axios.get(this.apiUrl + params + this.apiKey).then((res: AxiosResponse) => res.data);
+    }
+
+    get(): any {
+        return this.data;
     }
 }
