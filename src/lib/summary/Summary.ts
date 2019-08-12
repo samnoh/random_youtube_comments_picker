@@ -1,8 +1,8 @@
-import { ConsoleOutput } from './reports';
+import { ConsoleOutput, HtmlOutput } from './reports';
 import { Random } from './analyzers';
 
 export interface Analyzer {
-    run(num?: number): string[];
+    run(): string[];
 }
 
 export interface OutputTarget {
@@ -11,13 +11,17 @@ export interface OutputTarget {
 
 export class Summary {
     static randomSelectWithConsoleReport(data: string[], num: number): void {
-        new Summary(new Random(data), new ConsoleOutput()).buildAndPrintReport(num);
+        new Summary(new Random(data, num), new ConsoleOutput()).buildAndPrintReport();
+    }
+
+    static randomSelectWithHtmlReport(data: string[], num: number): void {
+        new Summary(new Random(data, num), new HtmlOutput()).buildAndPrintReport();
     }
 
     constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
 
-    buildAndPrintReport(num: number): void {
-        const output = this.analyzer.run(num);
+    buildAndPrintReport(): void {
+        const output = this.analyzer.run();
         this.outputTarget.print(output);
     }
 }
