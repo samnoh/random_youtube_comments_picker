@@ -21,7 +21,16 @@ export const htmlTemplate = (report: string | string[]): string => {
 
 `;
 
-    const body = ``; // TODO
+    let body = '';
+    if (Array.isArray(report)) {
+        body += '<ul>';
+        report.map(item => {
+            body += `<li>${item}</li>`;
+        });
+        body += '</ul>';
+    } else {
+        body += report;
+    }
 
     const tail = `
     </div>
