@@ -2,7 +2,7 @@
     "name": "random_youtube_comments_picker",
     "version": "1.0.0",
     "description": "Random winner generator of Youtube comments for giveaways",
-    "main": "src/index.js",
+    "main": "build/index.js",
     "scripts": {
         "dev": "tsc-watch --onSuccess \"node build/index.js\" --onFailure \"echo Compilation Failed\" ",
         "start": "node build/index",
