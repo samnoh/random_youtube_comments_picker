@@ -22,7 +22,7 @@ export const htmlTemplate = (report: string | string[]): string => {
 `;
 
     let body = '';
-    if (Array.isArray(report)) {
+    if (typeof report !== 'string') {
         body += '<ul>';
         report.map(item => {
             body += `<li>${item}</li>`;

@@ -1,4 +1,4 @@
-import { ConsoleOutput, HtmlOutput } from './reports';
+import { ConsoleOutput, HtmlOutput, TxtOutput } from './reports';
 import { Random } from './analyzers';
 
 export interface Analyzer {
@@ -16,6 +16,10 @@ export class Summary {
 
     static randomSelectWithHtmlReport(data: string[], num: number): void {
         new Summary(new Random(data, num), new HtmlOutput()).buildAndPrintReport();
+    }
+
+    static randomSelectWithTxtReport(data: string[], num: number): void {
+        new Summary(new Random(data, num), new TxtOutput()).buildAndPrintReport();
     }
 
     constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
