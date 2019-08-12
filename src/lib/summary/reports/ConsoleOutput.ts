@@ -5,7 +5,7 @@ export class ConsoleOutput implements OutputTarget {
         if (Array.isArray(report)) {
             let index = 0;
             const interval = setInterval(() => {
-                console.log(report[index++]);
+                console.log(report[index++] + '\n---------------');
 
                 if (index >= report.length) {
                     clearInterval(interval);

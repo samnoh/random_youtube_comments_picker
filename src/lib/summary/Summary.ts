@@ -11,21 +11,31 @@ export interface OutputTarget {
 
 export class Summary {
     static randomSelectWithConsoleReport(data: string[], num: number): void {
-        new Summary(new Random(data, num), new ConsoleOutput()).buildAndPrintReport();
+        new Summary(new Random(data, num), new ConsoleOutput()).build();
     }
 
     static randomSelectWithHtmlReport(data: string[], num: number): void {
-        new Summary(new Random(data, num), new HtmlOutput()).buildAndPrintReport();
+        new Summary(new Random(data, num), new HtmlOutput()).build();
     }
 
     static randomSelectWithTxtReport(data: string[], num: number): void {
-        new Summary(new Random(data, num), new TxtOutput()).buildAndPrintReport();
+        new Summary(new Random(data, num), new TxtOutput()).build();
     }
 
-    constructor(public analyzer: Analyzer, public outputTarget: OutputTarget) {}
+    static randomSelectWithConsoleAndTxtReport(data: string[], num: number): void {
+        new Summary(new Random(data, num), new ConsoleOutput(), new TxtOutput()).build();
+    }
 
-    buildAndPrintReport(): void {
+    public outputTarget: OutputTarget[];
+
+    constructor(public analyzer: Analyzer, ...outputTarget: OutputTarget[]) {
+        this.outputTarget = [...outputTarget];
+    }
+
+    build(): void {
         const output = this.analyzer.run();
-        this.outputTarget.print(output);
+        this.outputTarget.map(target => {
+            target.print(output);
+        });
     }
 }
