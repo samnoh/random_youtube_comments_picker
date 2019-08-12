@@ -1,3 +1,3 @@
 import { YoutubeApi } from './lib';
 
-YoutubeApi.getAndPrintComments('pzOKiuJuDcQ');
+YoutubeApi.getComments('pzOKiuJuDcQ').then(data => console.log(data));
