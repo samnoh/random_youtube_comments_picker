@@ -1,4 +1,4 @@
-# Random YouTube Comments Picker
+# Random YouTube Comments
 
 -   CLI Node App
 -   Random winner generator of YouTube comments for giveaways
@@ -7,7 +7,7 @@
 
 ```Bash
 git clone https://github.com/samnoh/random_youtube_comments_picker.git
-cd random_youtube_comments_picker
+cd random_youtube_comments
 npm run build
 npm i -g
 ```
