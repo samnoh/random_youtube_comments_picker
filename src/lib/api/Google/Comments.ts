@@ -1,5 +1,3 @@
-import chalk from 'chalk';
-
 import { ApiUrl } from './ApiUrl';
 import { GoogleApi } from './GoogleApi';
 
@@ -21,23 +19,19 @@ export class Comments extends GoogleApi<string[], any> {
     data: string[] = [];
 
     async save(videoId: string): Promise<void> {
-        try {
-            let nextPagetoken: string = '';
-            videoId = this.getVideoId(videoId);
+        let nextPagetoken: string = '';
+        videoId = this.getVideoId(videoId);
 
-            do {
-                const url = `${videoId}${nextPagetoken ? '&pageToken=' + nextPagetoken : ''}`;
-                const res = await this.getData(url);
-                res.items.map((item: Item) => {
-                    const snippet: CommentText = item.snippet.topLevelComment.snippet;
-                    this.data.push(`${snippet.authorDisplayName} - ${snippet.textDisplay}`);
-                });
+        do {
+            const url = `${videoId}${nextPagetoken ? '&pageToken=' + nextPagetoken : ''}`;
+            const res = await this.getData(url);
+            res.items.map((item: Item) => {
+                const snippet: CommentText = item.snippet.topLevelComment.snippet;
+                this.data.push(`${snippet.authorDisplayName} - ${snippet.textDisplay}`);
+            });
 
-                nextPagetoken = res.nextPageToken;
-            } while (nextPagetoken);
-        } catch (e) {
-            console.error(chalk.bold.red('Comments Error: ' + e));
-        }
+            nextPagetoken = res.nextPageToken;
+        } while (nextPagetoken);
     }
 
     print(): void {

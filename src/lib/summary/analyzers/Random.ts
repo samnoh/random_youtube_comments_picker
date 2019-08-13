@@ -10,8 +10,9 @@ export class Random implements Analyzer {
         const winners = new Set();
 
         if (this.nWinners >= length || this.nWinners <= 0) {
-            if (this.nWinners >= 0)
+            if (this.nWinners >= 0) {
                 console.log(chalk.bgRed('Error: nWinners is more than or equal to nData'));
+            }
 
             return this.data;
         }
